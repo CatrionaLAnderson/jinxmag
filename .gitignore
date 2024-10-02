@@ -1,0 +1,20 @@
+# macOS system files
+.DS_Store
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+
+# Node.js (only if using npm or yarn)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Editor specific files (VSCode, etc.)
+.vscode/
+.idea/
+
+# Environment variable files (optional)
+.env
