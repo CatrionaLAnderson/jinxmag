@@ -2,51 +2,55 @@ body {
     margin: 0;
     padding: 0;
     background-color: #EAF1FF;
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
-.nav{
+.nav {
     position: fixed; /* Set the navbar to fixed position */
     bottom: 0; /* Position the navbar at the bottom of the page */
     width: 100%; /* Full width */
     background-color: #C8E2EC;
-    height: 12%;
+    height: 12%; /* Ensure the navbar height is fixed */
 }
 
-.navbar{
+.navbar {
     display: flex; /* Enable flexbox */
     justify-content: space-between; /* Distribute space between items */
     align-items: center; /* Center items vertically */
     padding: 20px 40px; /* Optional padding for aesthetics */
 }
 
-.navbar a:not(.jinxnav){
+.navbar a:not(.jinxnav) {
     text-decoration: none; /* Remove underline */
     margin-bottom: 10px;
     font-size: 20px;
-    color:#000;
-    
+    color: #000;
 }
 
-.navbar a:hover:not(.jinxnav){
-    color:rgb(216, 171, 216);
+.navbar a:hover:not(.jinxnav) {
+    color: rgb(216, 171, 216);
     font-size: 28px;
     text-decoration: underline;
     font-weight: bold;
 }
 
-
-.jinxnav{
+.jinxnav {
     width: 312px;
-height: 58px;
-flex-shrink: 0;
-color: #000;
-font-family: "Anton", sans-serif;
-letter-spacing: 2px; /* Adjust the value as needed */
-font-size: 30px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-text-align: center;
+    height: 58px;
+    flex-shrink: 0;
+    color: #000;
+    font-family: "Anton", sans-serif;
+    letter-spacing: 2px; /* Adjust the value as needed */
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
+
+.content1 {
+    float: left;
+    padding-bottom: 200px;
 }
 
 .issues-container {
@@ -65,8 +69,8 @@ text-align: center;
 
 .issuecontent {
     margin-left: 10px;
-    padding:10px;
-    width:80%;
+    padding: 10px;
+    width: 80%;
 }
 
 .issue h2 {
@@ -79,9 +83,6 @@ text-align: center;
     font-size: 18px;
     margin-bottom: 15px;
     color: #000;
-}
-.issueimg{
-    width:350px;
 }
 
 .pdf-link {
@@ -99,21 +100,29 @@ text-align: center;
     background-color: rgb(216, 171, 216);
 }
 
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-h1{
-    font-weight:lighter;
+h1 {
+    font-weight: lighter;
     font-size: 60px;
     font-family: "Baskervville SC", serif;
-    font-weight:400;
+    font-weight: 400;
     margin-left: 2%;
+}
+
+.img {
+    width: 300px;
+    margin-left: 100px;
+    animation: bounceAnimation 1s infinite; /* Animation properties */
+}
+
+@keyframes bounceAnimation {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0); /* Original position */
+    }
+    40% {
+        transform: translateY(-30px); /* Move up */
+    }
+    60% {
+        transform: translateY(-15px); /* Move down */
+    }
 }

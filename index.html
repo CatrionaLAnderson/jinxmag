@@ -6,13 +6,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <title>Jinx Mag</title>
     <link rel="stylesheet" href="css/homestyles.css">
 </head>
@@ -20,27 +15,47 @@
     <header>
         <nav class="nav">
             <hr style="border: none; border-top: 2px solid #000; width: 100%;margin-top: -1.5px;">
-
             <div class="navbar">
                 <a href="index.html">Home</a>
                 <a href="about.html">About Us</a>
                 <a class="jinxnav">Jinx Magazine</a>
                 <a href="issues.html">Issues</a>
-                <!-- <a href="submissions.html">Submissions</a> -->
                 <a href="contact.html">Contact</a>
             </div>
         </nav>
     </header>
     <main class="main">
+        <!-- Wrap the button and image in the same container -->
         <section class="parisphoto">
-            <img src="img/HomePhoto.heic" alt="Paris photo">
+            <div class="image-container">
+                <img src="img/HomePhoto.heic" alt="Paris photo">
+                <button type="button" class="button-on-image"  onclick="toggleDropdown()"></button>
+            </div>
         </section>
         <section class="MainText">
             <p class="animate__animated animate__fadeInDown">Jinx Mag: A reflection of thoughts, ideas, and curiosity</p>
         </section>
     </main>
-    <!-- <footer>
-        <p>© 2024 Jinx Mag. All rights reserved.</p>
-    </footer> -->
+
+    <!-- Full screen dropdown -->
+    <div id="dropdownMenu" class="dropdown-menu">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Issues</a>
+        <a href="#">Contact</a>
+        <span class="close-button" onclick="toggleDropdown()">✖</span> <!-- X button -->
+    </div>
+
+    <script>
+        // JavaScript to toggle dropdown visibility
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                dropdown.style.display = "block";
+            } else {
+                dropdown.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

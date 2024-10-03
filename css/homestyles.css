@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #EAF1FF;
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 /* footer {
@@ -40,7 +41,6 @@ body {
 .navbar a:hover:not(.jinxnav){
     color:rgb(216, 171, 216);
     font-size: 28px;
-    text-decoration: underline;
     font-weight: bold;
 }
 
@@ -98,3 +98,58 @@ text-align: center;
     animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 2s; /* don't forget to set a duration! */
   }
+
+.button-on-image{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: white; /* Set the background to white */
+    border: none; /* Remove any border */
+    border-radius: 50%; /* Make the button circular */
+    cursor: pointer; /* Change the cursor to pointer on hover */
+    margin-top: 3%;
+    margin-left: -42%;
+}
+
+.button-on-image:hover{
+   width:40px;
+   height: 40px;
+   background-color:rgb(250, 213, 144);
+}
+
+ /* Full page overlay dropdown */
+ .dropdown-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    z-index: 999; /* Ensure it's on top */
+    text-align: center;
+    color: white;
+    padding-top: 50px;
+}
+
+.dropdown-menu a {
+    display: block;
+    font-size: 24px;
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    color: #ccc;
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
