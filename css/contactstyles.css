@@ -78,4 +78,12 @@ body, html {
     margin-top: 0; /* Remove additional space above the inputs */
 }
 
+#pdf-upload {
+    height: 50px; /* Adjust this value as needed */
+    padding-top: 10px; /* Adjust for vertical padding */
+    padding-bottom: 10px; /* Adjust for vertical padding */
+}
+#pdf-upload {
+    padding: 12px 10px; /* Increase vertical padding */
+}
 
