@@ -2,46 +2,46 @@
     import supabase from './js/supabase.js';
 
     document.getElementById('submission-form').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Prevent the default form submission behavior
-    try {
-        // Capture form data
-        const title = document.getElementById('title').value;
-        const submissionType = document.getElementById('submission_type').value;
-        const description = document.getElementById('description').value;
-        const authorName = document.getElementById('author_name').value;
-        const authorEmail = document.getElementById('author_email').value;
-        const category = document.getElementById('category').value;
-        const artworkUrl = document.getElementById('artwork_url').value || null; // Optional
-        const contentText = document.getElementById('content_text').value;
+        e.preventDefault(); // Prevent the default form submission behavior
+        try {
+            // Capture form data
+            const title = document.getElementById('title').value;
+            const submissionType = document.getElementById('submission_type').value;
+            const description = document.getElementById('description').value;
+            const authorName = document.getElementById('author_name').value;
+            const authorEmail = document.getElementById('author_email').value;
+            const category = document.getElementById('category').value;
+            const artworkUrl = document.getElementById('artwork_url').value || null; // Optional
+            const contentText = document.getElementById('content_text').value;
 
-        // Make the request to Supabase
-        const { data, error } = await supabase
-            .from('submissions') // Replace 'submissions' with your table name
-            .insert([
-                {
-                    title,
-                    submission_type: submissionType,
-                    description,
-                    author_name: authorName,
-                    author_email: authorEmail,
-                    category,
-                    artwork_url: artworkUrl,
-                    content_text: contentText,
-                },
-            ]);
+            // Make the request to Supabase
+            const { data, error } = await supabase
+                .from('submissions') // Replace 'submissions' with your table name
+                .insert([
+                    {
+                        title,
+                        submission_type: submissionType,
+                        description,
+                        author_name: authorName,
+                        author_email: authorEmail,
+                        category,
+                        artwork_url: artworkUrl,
+                        content_text: contentText,
+                    },
+                ]);
 
-        if (error) {
-            console.error('Error inserting data:', error);
-            alert('Submission failed! Please try again.');
-        } else {
-            console.log('Submission successful:', data);
-            alert('Thank you for your submission!');
+            if (error) {
+                console.error('Error inserting data:', error);
+                alert('Submission failed! Please try again.');
+            } else {
+                console.log('Submission successful:', data);
+                alert('Thank you for your submission!');
+            }
+        } catch (err) {
+            console.error('Unexpected error:', err);
+            alert('An unexpected error occurred. Please try again.');
         }
-    } catch (err) {
-        console.error('Unexpected error:', err);
-        alert('An unexpected error occurred. Please try again.');
-    }
-});
+    });
 
 </script>
 
@@ -68,8 +68,9 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html">Jinx Magazine</a> 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.html">Jinx Magazine</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -85,90 +86,96 @@
         </nav>
     </header>
 
-    <p class="lead mt-3" style="max-width: 600px; margin: 0 auto toptext;">We would love to see your work and your ideas! Submit them in the form below, or email/dm us directly <3</p>
+    <p class="lead mt-3" style="max-width: 600px; 
+          margin: 0 auto; 
+          text-align: center; 
+          font-family: 'Poppins', sans-serif;">
+        We would love to see your work and your ideas! Submit them in the form below, or email/dm us directly <3 </p>
 
-    <!-- Submission Form -->
-    <section class="submission-form py-5">
-        <div class="container">
-            <h1 class="text-center mb-4">Submit Your Work</h1>
-            <form id="submission-form" method="POST" class="row g-3">
-                <!-- Title -->
-                <div class="col-md-6">
-                    <label for="title" class="form-label">Title of Submission (Article or Artwork):</label>
-                    <input type="text" class="form-control" id="title" name="title" 
-                           pattern=".{5,}" title="Title must be at least 5 characters long" required>
-                </div>
-                <!-- Submission Type -->
-                <div class="col-md-6">
-                    <label for="submission_type" class="form-label">Type of Submission:</label>
-                    <select class="form-select form-control" id="submission_type" name="submission_type" required>
-                        <option value="" disabled selected>Select a type</option>
-                        <option value="Article">Article</option>
-                        <option value="Art">Art</option>
-                        <option value="Poetry">Poetry</option>
-                        <option value="Short Story">Short Story</option>
-                    </select>
-                </div>
-                <!-- Description -->
-                <div class="col-md-12">
-                    <label for="description" class="form-label">Brief Description or Abstract:</label>
-                    <textarea class="form-control" id="description" name="description" rows="3" 
-                              minlength="20" maxlength="500" required 
-                              title="Description must be between 20 and 500 characters"></textarea>
-                </div>
-                <!-- Author Name -->
-                <div class="col-md-6">
-                    <label for="author_name" class="form-label">Author/Artist Name:</label>
-                    <input type="text" class="form-control" id="author_name" name="author_name" 
-                           pattern="[A-Za-z\s]+" title="Name can only contain letters and spaces" required>
-                </div>
-                <!-- Author Email -->
-                <div class="col-md-6">
-                    <label for="author_email" class="form-label">Author/Artist Email:</label>
-                    <input type="email" class="form-control" id="author_email" name="author_email" 
-                           required>
-                </div>
-                <!-- Category -->
-                <div class="col-md-6">
-                    <label for="category" class="form-label">Category (e.g., Fashion, Technology, Art):</label>
-                    <input type="text" class="form-control" id="category" name="category" 
-                           pattern="[A-Za-z\s]+" title="Category can only contain letters and spaces" required>
-                </div>
-                <!-- Artwork URL -->
-                <div class="col-md-6">
-                    <label for="artwork_url" class="form-label">Artwork URL (if applicable):</label>
-                    <input type="url" class="form-control" id="artwork_url" name="artwork_url"
-                           pattern="https?://.*" title="Please enter a valid URL starting with http:// or https://">
-                </div>
-                <!-- Content -->
-                <div class="col-md-12">
-                    <label for="content_text" class="form-label">Content:</label>
-                    <textarea class="form-control" id="content_text" name="content_text" rows="4" 
-                              minlength="50" required title="Content must be at least 50 characters long"></textarea>
-                </div>
-                <!-- Submit Button -->
-                <div class="col-12">
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
-                </div>
-            </form>
-        </div>
-    </section>
-    
-    
 
-    <!-- Full screen dropdown menu -->
-    <div id="dropdownMenu" class="dropdown-menu">
-        <a href="index.html">Home</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="issues.html">Issues</a>
-        <a href="contact.html">Submissions</a>
-        <span class="close-button" onclick="toggleDropdown()">✖</span> <!-- X button -->
-    </div>
+            <!-- Submission Form -->
+            <section class="submission-form py-5">
+                <div class="container">
+                    <h1 class="text-center mb-4">Submit Your Work</h1>
+                    <form id="submission-form" method="POST" class="row g-3">
+                        <!-- Title -->
+                        <div class="col-md-6">
+                            <label for="title" class="form-label">Title of Submission (Article or Artwork):</label>
+                            <input type="text" class="form-control" id="title" name="title" pattern=".{5,}"
+                                title="Title must be at least 5 characters long" required>
+                        </div>
+                        <!-- Submission Type -->
+                        <div class="col-md-6">
+                            <label for="submission_type" class="form-label">Type of Submission:</label>
+                            <select class="form-select form-control" id="submission_type" name="submission_type"
+                                required>
+                                <option value="" disabled selected>Select a type</option>
+                                <option value="Article">Article</option>
+                                <option value="Art">Art</option>
+                                <option value="Poetry">Poetry</option>
+                                <option value="Short Story">Short Story</option>
+                            </select>
+                        </div>
+                        <!-- Description -->
+                        <div class="col-md-12">
+                            <label for="description" class="form-label">Brief Description or Abstract:</label>
+                            <textarea class="form-control" id="description" name="description" rows="3" minlength="20"
+                                maxlength="500" required
+                                title="Description must be between 20 and 500 characters"></textarea>
+                        </div>
+                        <!-- Author Name -->
+                        <div class="col-md-6">
+                            <label for="author_name" class="form-label">Author/Artist Name:</label>
+                            <input type="text" class="form-control" id="author_name" name="author_name"
+                                pattern="[A-Za-z\s]+" title="Name can only contain letters and spaces" required>
+                        </div>
+                        <!-- Author Email -->
+                        <div class="col-md-6">
+                            <label for="author_email" class="form-label">Author/Artist Email:</label>
+                            <input type="email" class="form-control" id="author_email" name="author_email" required>
+                        </div>
+                        <!-- Category -->
+                        <div class="col-md-6">
+                            <label for="category" class="form-label">Category (e.g., Fashion, Technology, Art):</label>
+                            <input type="text" class="form-control" id="category" name="category" pattern="[A-Za-z\s]+"
+                                title="Category can only contain letters and spaces" required>
+                        </div>
+                        <!-- Artwork URL -->
+                        <div class="col-md-6">
+                            <label for="artwork_url" class="form-label">Artwork URL (if applicable):</label>
+                            <input type="url" class="form-control" id="artwork_url" name="artwork_url"
+                                pattern="https?://.*"
+                                title="Please enter a valid URL starting with http:// or https://">
+                        </div>
+                        <!-- Content -->
+                        <div class="col-md-12">
+                            <label for="content_text" class="form-label">Content:</label>
+                            <textarea class="form-control" id="content_text" name="content_text" rows="4" minlength="50"
+                                required title="Content must be at least 50 characters long"></textarea>
+                        </div>
+                        <!-- Submit Button -->
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
 
-    <script src="js/scripts.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+            <!-- Full screen dropdown menu -->
+            <div id="dropdownMenu" class="dropdown-menu">
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="issues.html">Issues</a>
+                <a href="contact.html">Submissions</a>
+                <span class="close-button" onclick="toggleDropdown()">✖</span> <!-- X button -->
+            </div>
+
+            <script src="js/scripts.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
