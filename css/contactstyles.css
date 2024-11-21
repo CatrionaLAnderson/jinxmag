@@ -78,3 +78,8 @@ body, html {
     margin-top: 0; /* Remove additional space above the inputs */
 }
 
+.toptext{
+    text-align: center;
+    margin-bottom: -2rem;
+}
+
