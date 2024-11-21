@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Jinx Mag Issues</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/aboutstyles.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="index.html">Jinx Magazine</a> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a onclick="toggleDropdown()" class="nav-link" href="#">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/jinxzine">Socials</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Container for centering the MainText -->
+    <div class="container text-center">
+        <section class="MainText my-3">
+            <p class="display-4">About Us</p>
+        </section>
+    </div>
+
+    <div class="container text-center">
+        <section class="infotext">
+            <p>
+                Welcome to Jinx Mag, our culture and lifestyle magazine where we explore fashion, music, art, and anything else that takes our fancy. 
+                <br>
+                Our mission is to create relatable and accessible content that
+                resonates with our audience as well as resonating with ourselves. At Jinx Mag, we believe that staying in your comfort zone might jinx your
+                potential for discovery.
+                <br>
+                We are three girls that go to university in London. Ciara, Grace and Cat. 
+                Our mission is to create relatable and accessible content that
+                resonates with our audience as well as resonating with ourselves. At Jinx Mag, we believe that staying in your comfort zone might jinx your
+                potential for discovery.
+                Our mission is to create relatable and accessible content that
+                resonates with our audience as well as resonating with ourselves. At Jinx Mag, we believe that staying in your comfort zone might jinx your
+                potential for discovery.
+            </p>
+        </section>
+    </div>
+
+    <!-- Image Section -->
+    <section class="aboutusphoto1 my-5">
+        <img src="img/AboutUs.jpeg" alt="Paris photo" class="img-fluid rounded">
+    </section>
+
+    <!-- Additional Content to Enable Scrolling -->
+    <div class="container extra-content my-5">
+        <p>
+            This is only just the beginning of our magazine and we are really excited to learn more as this journey continues. 
+        </p>
+    </div>
+
+    <!-- Full screen dropdown -->
+    <div id="dropdownMenu" class="dropdown-menu">
+        <a href="index.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="issues.html">Issues</a>
+        <a href="contact.html">Submissions</a>
+        <span class="close-button" onclick="toggleDropdown()">✖</span> <!-- X button -->
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

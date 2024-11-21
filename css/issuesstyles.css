@@ -1,51 +1,7 @@
-body {
+body, html {
     margin: 0;
     padding: 0;
-    background-color: #EAF1FF;
-    overflow-y: auto; /* Enable vertical scrolling */
-}
-
-.nav {
-    position: fixed; /* Set the navbar to fixed position */
-    bottom: 0; /* Position the navbar at the bottom of the page */
-    width: 100%; /* Full width */
-    background-color: #C8E2EC;
-    height: 12%; /* Ensure the navbar height is fixed */
-}
-
-.navbar {
-    display: flex; /* Enable flexbox */
-    justify-content: space-between; /* Distribute space between items */
-    align-items: center; /* Center items vertically */
-    padding: 20px 40px; /* Optional padding for aesthetics */
-}
-
-.navbar a:not(.jinxnav) {
-    text-decoration: none; /* Remove underline */
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: #000;
-}
-
-.navbar a:hover:not(.jinxnav) {
-    color: rgb(216, 171, 216);
-    font-size: 28px;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.jinxnav {
-    width: 312px;
-    height: 58px;
-    flex-shrink: 0;
-    color: #000;
-    font-family: "Anton", sans-serif;
-    letter-spacing: 2px; /* Adjust the value as needed */
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
+    font-family: "Baskervville SC", serif;
 }
 
 .content1 {
@@ -55,7 +11,7 @@ body {
 
 .issues-container {
     display: flex;
-    margin-top: 40px;
+    margin-top: 5%;
     margin-right: 200px;
     margin-left: 30px;
     justify-content: space-around;
@@ -71,6 +27,7 @@ body {
     margin-left: 10px;
     padding: 10px;
     width: 80%;
+    margin-bottom: 1rem;
 }
 
 .issue h2 {
@@ -100,19 +57,30 @@ body {
     background-color: rgb(216, 171, 216);
 }
 
-
 h1 {
     font-weight: lighter;
-    font-size: 60px;
+    font-size: 3.75rem; /* 60px = 3.75rem */
+    text-align: left;
+    margin-left: 1%;
     font-family: "Baskervville SC", serif;
-    font-weight: 400;
-    margin-left: 2%;
+    font-weight: bolder;
+    padding: 1rem; /* 40px = 2.5rem */
+    color: #375032;
+    margin-bottom: -3%;
 }
 
-.img {
-    width: 300px;
-    margin-left: 100px;
-    animation: bounceAnimation 1s infinite; /* Animation properties */
+.side-images {
+    display: flex; /* Aligns the images horizontally */
+    flex-direction: column; /* Keeps them stacked on top of each other */
+    top: 20%; /* Adjust this to position the images vertically */
+    right: 2%; /* Position them at the right edge */
+    gap: 1rem; /* Adds spacing between the images */
+}
+
+.sideimg {
+    width: 300px; /* Consistent image size */
+    height: auto; /* Maintain aspect ratio */
+    animation: bounceAnimation 1s infinite; /* Retain your animation */
 }
 
 @keyframes bounceAnimation {
@@ -124,5 +92,40 @@ h1 {
     }
     60% {
         transform: translateY(-15px); /* Move down */
+    }
+}
+
+/* Media query for phone screens */
+@media (max-width: 768px) {
+    /* Change issues container to a single column layout on phone size */
+    h1{
+        font-size: 2rem;
+    }
+    .issues-container {
+        display: block;
+        margin-right: 0;
+        margin-left: 0;
+        justify-content: flex-start;
+    }
+
+    .issueimg {
+        width: 100%; /* Make the images responsive */
+        margin-right: 0;
+        padding:1rem;
+    }
+
+    .issuecontent {
+        width: 100%; /* Make the content take full width */
+        margin-left: 0;
+    }
+
+    .pdf-link {
+        width: 100%; /* Make the button fill the width */
+        text-align: center;
+    }
+
+    /* Hide side images on smaller screens */
+    .side-images {
+        display: none;
     }
 }

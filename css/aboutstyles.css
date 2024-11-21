@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Baskervville SC", serif;
+}
+
+.container {
+    position: relative; /* Make this the containing block for absolute positioning */
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+}
+
+.MainText {
+    font-weight: lighter;
+    font-size: 3.75rem; /* 60px = 3.75rem */
+    text-align: center;
+    font-family: "Baskervville SC", serif;
+    font-weight: bolder;
+    padding: 1rem; /* 40px = 2.5rem */
+    color: #375032;
+}
+
+.container2 {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically if needed */
+    font-family: "Poppins", sans-serif;
+}
+
+.introtext,
+.infotext {
+    margin: 0; /* Reset default margins */
+    padding: 0; /* Reset default padding */
+    line-height: 1.5; /* Set same line height */
+    font-family: "Poppins", sans-serif;
+}
+
+.infotext {
+    font-size: 1rem; /* Adjust size as needed */
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    color:rgb(158, 42, 42);
+}
+
+.aboutusphoto1 {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px; /* Adjust the height as needed */
+}
+
+.aboutusphoto1 img {
+    max-width: 100%;
+    max-height: 100%;
+    padding: 1rem;
+}
+
+.extra-content {
+    padding: 2rem; /* Add some padding to the extra content */
+    text-align: center; /* Center the text for better readability */
+    font-family: "Poppins", sans-serif;
+    color:rgb(158, 42, 42);
+    font-weight: bold;
+    width:90%;
+}
+
+@media (max-width: 768px) {
+    .MainText {
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+        padding: 0.5rem;  /* Reduce padding */
+    }
+
+    .aboutusphoto1 {
+        height: auto; /* Remove fixed height for the image container */
+        padding: 0; /* Remove any unnecessary padding */
+    }
+
+    .aboutusphoto1 img {
+        width: 100%; /* Make the image responsive */
+        height: auto;
+    }
+
+    .extra-content {
+        padding: 1rem; /* Reduce padding on smaller screens */
+        font-size: 1rem; /* Adjust font size */
+        width: 100%;
+    }
+
+    /* Ensure there's no margin between sections */
+    .container, .container2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .introtext, .infotext {
+        margin-bottom: -2rem; /* Remove unnecessary margin between text blocks */
+        padding-bottom: -0.2rem;
+        padding-right: 1rem;
+        padding-left:1rem;
+    }
+}

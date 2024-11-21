@@ -1,155 +1,107 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #EAF1FF;
-    overflow-y: auto; /* Enable vertical scrolling */
-}
 
-/* footer {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-} */
-
-.nav{
-    position: fixed; /* Set the navbar to fixed position */
-    bottom: 0; /* Position the navbar at the bottom of the page */
-    width: 100%; /* Full width */
-    background-color: #C8E2EC;
-    height: 12%;
-}
-
-.navbar{
-    display: flex; /* Enable flexbox */
-    justify-content: space-between; /* Distribute space between items */
-    align-items: center; /* Center items vertically */
-    padding: 20px 40px; /* Optional padding for aesthetics */
-}
-
-.navbar a:not(.jinxnav){
-    text-decoration: none; /* Remove underline */
-    margin-bottom: 10px;
-    font-size: 20px;
-    color:#000;
-    
-}
-
-.navbar a:hover:not(.jinxnav){
-    color:rgb(216, 171, 216);
-    font-size: 28px;
-    font-weight: bold;
-}
-
-
-/* Links inside the navbar */
-/* .nav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  } */
-
-img{
-    width:650px;
-    height:748px;
+.parisphoto{
+    display: flex;
     float:left;
+    width: 30em;
 }
 
-.MainText{
-    font-weight:lighter;
-    font-size: 60px;
+img:not(.logoimg) {
+    width: 40.625rem; /* 650px = 40.625rem */
+    height: 46.75rem; /* 748px = 46.75rem */
+    float: left;
+}
+
+.logoimg-container {
+    position: absolute; /* Keep it absolute if necessary */
+    top: 7rem; /* 20px = 1.25rem */
+    left: 0;
+    right: 8em;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    z-index: 10;
+}
+
+.logoimg {
+    width: 40rem; 
+}
+
+.MainText {
+    font-weight: lighter;
+    font-size: 3.75rem; /* 60px = 3.75rem */
     text-align: center;
     font-family: "Baskervville SC", serif;
-    line-height: 200%;
-    font-weight:400;
-    height: 550px;
-    margin-left: 684px;
-    margin-right: 75px;
+    line-height: 2; /* 200% */
+    font-weight: bolder;
+    height: 34.375rem; /* 550px = 34.375rem */
+    margin-left: 42.75rem; /* 684px = 42.75rem */
+    margin-right: 4.6875rem; /* 75px = 4.6875rem */
     position: absolute; /* Change to absolute */
-    padding:40px;
-    padding-bottom: 40px;
-    color:#375032;
-}
-
-.jinxnav{
-    width: 312px;
-height: 58px;
-flex-shrink: 0;
-color: #000;
-font-family: "Anton", sans-serif;
-letter-spacing: 2px; /* Adjust the value as needed */
-font-size: 30px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-text-align: center;
+    padding: 2.5rem; /* 40px = 2.5rem */
+    color: #375032;
 }
 
 .my-element {
     display: inline-block;
     margin: 0 0.5rem;
-  
-    animation: fadeInDown; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 2s; /* don't forget to set a duration! */
-  }
-
-.button-on-image{
-    position: absolute;
-    transform: translate(-50%, -50%);
-    width: 30px;
-    height: 30px;
-    background-color: white; /* Set the background to white */
-    border: none; /* Remove any border */
-    border-radius: 50%; /* Make the button circular */
-    cursor: pointer; /* Change the cursor to pointer on hover */
-    margin-top: 3%;
-    margin-left: -42%;
+    animation: fadeInDown;
+    animation-duration: 2s;
 }
 
-.button-on-image:hover{
-   width:40px;
-   height: 40px;
-   background-color:rgb(250, 213, 144);
-}
 
- /* Full page overlay dropdown */
- .dropdown-menu {
+.modal {
     display: none;
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
-    z-index: 999; /* Ensure it's on top */
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    width: 100%;
+    height: 20%;
+    border-radius: 60% 60% 0 0;
+    position: relative;
     text-align: center;
-    color: white;
-    padding-top: 50px;
+    padding-top: 1.875rem; /* 30px = 1.875rem */
+    box-shadow: 0 -0.25rem 0.625rem rgba(0, 0, 0, 0.2); /* 0 -4px 10px */
+    transform: translateY(100%);
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
 }
 
-.dropdown-menu a {
-    display: block;
-    font-size: 24px;
-    color: white;
-    margin: 20px;
-    text-decoration: none;
+.modal.show .modal-content {
+    transform: translateY(0);
+    opacity: 1;
 }
 
-.dropdown-menu a:hover {
-    color: #ccc;
+@keyframes arcAnimation {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-.close-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 30px;
-    color: white;
-    cursor: pointer;
+@keyframes arcLeaveAnimation {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
 }
+
+.modal.hide .modal-content {
+    animation: arcLeaveAnimation 0.5s ease-out forwards;
+}
+
