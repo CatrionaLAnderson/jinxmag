@@ -89,12 +89,17 @@
                     alert('Thank you for your submission!');
                 }
             }
+
+            // Clear the form after submission
+            document.getElementById('submission-form').reset();
+            
         } catch (err) {
             console.error('Unexpected error:', err);
             alert('An unexpected error occurred. Please try again.');
         }
     });
 </script>
+
 
 
 
