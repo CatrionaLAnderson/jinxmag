@@ -63,6 +63,7 @@
                 } else {
                     console.log('Submission successful:', data);
                     alert('Thank you for your submission!');
+                    document.getElementById('submission-form').reset(); // Clear the form
                 }
             } else {
                 // If no PDF is uploaded, just proceed with the normal form submission
@@ -87,18 +88,16 @@
                 } else {
                     console.log('Submission successful:', data);
                     alert('Thank you for your submission!');
+                    document.getElementById('submission-form').reset(); // Clear the form
                 }
             }
-
-            // Clear the form after submission
-            document.getElementById('submission-form').reset();
-            
         } catch (err) {
             console.error('Unexpected error:', err);
             alert('An unexpected error occurred. Please try again.');
         }
     });
 </script>
+
 
 
 
@@ -162,8 +161,8 @@
                         <!-- Title -->
                         <div class="col-md-6">
                             <label for="title" class="form-label">Title of Submission (Article or Artwork):</label>
-                            <input type="text" class="form-control" id="title" name="title" pattern=".{5,}"
-                                title="Title must be at least 5 characters long" required>
+                            <input type="text" class="form-control" id="title" name="title" pattern=".{3,}"
+                                title="Title must be at least 3 characters long" required>
                         </div>
                         <!-- Submission Type -->
                         <div class="col-md-6">
@@ -180,9 +179,9 @@
                         <!-- Description -->
                         <div class="col-md-12">
                             <label for="description" class="form-label">Brief Description or Abstract:</label>
-                            <textarea class="form-control" id="description" name="description" rows="3" minlength="20"
+                            <textarea class="form-control" id="description" name="description" rows="3" minlength="10"
                                 maxlength="500" required
-                                title="Description must be between 20 and 500 characters"></textarea>
+                                title="Description must be between 10 and 500 characters"></textarea>
                         </div>
                         <!-- Author Name -->
                         <div class="col-md-6">
@@ -211,14 +210,14 @@
                         <!-- Content -->
                         <div class="col-md-12">
                             <label for="content_text" class="form-label">Content:</label>
-                            <textarea class="form-control" id="content_text" name="content_text" rows="4" minlength="50"
-                                required title="Content must be at least 50 characters long"></textarea>
+                            <textarea class="form-control" id="content_text" name="content_text" rows="4" minlength="30"
+                                 title="Content must be at least 30 characters long"></textarea>
                         </div>
                         <!-- PDF Upload -->
                         <div class="col-md-12">
                             <label for="pdf-upload" class="form-label">Upload Your PDF Submission:</label>
                             <input type="file" class="form-control" id="pdf-upload" name="pdf" accept="application/pdf"
-                                required>
+                                >
                         </div>
                         <!-- Submit Button -->
                         <div class="col-12">
