@@ -62,7 +62,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    align-self: start;
+ 
 }
 
 .zine-order-form button:hover {
@@ -74,16 +74,22 @@ body {
     text-align: center;
 }
 
+.paypal-button form {
+    display: flex;
+    justify-content: center;
+}
+
 .paypal-button input[type="submit"] {
     background-color: #ffc439;
     border: none;
     color: #111;
     font-weight: bold;
-    padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1.5rem;
     font-size: 1rem;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .paypal-button input[type="submit"]:hover {

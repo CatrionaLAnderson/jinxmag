@@ -74,6 +74,9 @@
             <label for="notes">Notes (optional)</label>
             <textarea name="notes" id="notes" rows="2"></textarea>
 
+            <p class="privacy-notice" style="align-items: left;">
+            By submitting, you agree to our <a href="privacy.html" target="_blank">Privacy Policy</a>.
+            </p>
             <button type="submit">Submit Order Info</button>
         </form>
 
@@ -97,6 +100,7 @@
         <a href="aboutus.html" class="d-block py-3">About Us</a>
         <a href="issues.html" class="d-block py-3">Issues</a>
         <a href="contact.html" class="d-block py-3">Submissions</a>
+        <a href="buyazine.html" class="d-block py-3">Buy Zine</a>
         <span class="close-button" onclick="toggleDropdown()">✖</span>
     </div>
 
@@ -114,6 +118,44 @@
             const total = quantity * 5;
             totalCostDisplay.textContent = `Total: £${total}`;
         });
+    </script>
+
+    <!-- Supabase order submission script -->
+    <script type="module">
+      import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+      const supabaseUrl = 'https://YOUR_PROJECT_ID.supabase.co';
+      const supabaseKey = 'YOUR_PUBLIC_ANON_KEY';
+      const supabase = createClient(supabaseUrl, supabaseKey);
+
+      const form = document.querySelector('.zine-order-form');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const street = document.getElementById('street').value;
+        const city = document.getElementById('city').value;
+        const postcode = document.getElementById('postcode').value;
+        const country = document.getElementById('country').value;
+        const quantity = parseInt(document.getElementById('quantity').value);
+        const notes = document.getElementById('notes').value;
+        const total_cost = quantity * 5;
+
+        const { error } = await supabase.from('zine_orders').insert([{
+          name, email, street, city, postcode, country, quantity, total_cost, notes
+        }]);
+
+        if (error) {
+          alert('Something went wrong. Please try again.');
+          console.error(error);
+        } else {
+          alert('Order submitted! Don’t forget to pay with PayPal below.');
+          form.reset();
+          document.getElementById('totalCost').textContent = 'Total: £5';
+        }
+      });
     </script>
 
 </body>
