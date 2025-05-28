@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy a Zine</title>
+    <link rel="stylesheet" href="css/buyazinestyles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show');
+        }
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('dropdownMenu');
+            if (!dropdown.contains(event.target) && !event.target.matches('.nav-link')) {
+                dropdown.classList.remove('show');
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand">Jinx Magazine</a> 
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a onclick="toggleDropdown()" class="nav-link" href="#">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/jinxzine">Socials</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="buy-zine-section">
+        <h1>Buy the Print Edition of Jinx Zine</h1>
+        <p>Fill out your details below and proceed to payment. Each copy is £6 including UK shipping.</p>
+
+        <form action="https://formspree.io/f/your-form-id" method="POST" class="zine-order-form">
+            <label for="name">Full Name</label>
+            <input type="text" name="name" id="name" required autocomplete="name">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required autocomplete="email">
+
+            <label>Shipping Address</label>
+            <div class="address-group">
+                <input type="text" name="street" id="street" required placeholder="Street Address" autocomplete="address-line1">
+                <input type="text" name="city" id="city" required placeholder="City" autocomplete="address-level2">
+                <input type="text" name="postcode" id="postcode" required placeholder="Postcode" autocomplete="postal-code">
+                <input type="text" name="country" id="country" required placeholder="Country" autocomplete="country">
+            </div>
+
+            <label for="quantity">Quantity</label>
+            <input type="number" name="quantity" id="quantity" min="1" value="1" required placeholder="e.g., 2">
+
+            <div id="totalCost" class="total-cost">
+                Total: £5
+            </div>
+
+            <label for="notes">Notes (optional)</label>
+            <textarea name="notes" id="notes" rows="2"></textarea>
+
+            <button type="submit">Submit Order Info</button>
+        </form>
+
+        <div class="paypal-button">
+            <p>After submitting your info above, please pay using the button below:</p>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="your-paypal-email@example.com">
+                <input type="hidden" name="item_name" value="Jinx Zine - Print Copy">
+                <input type="hidden" name="amount" value="6.00">
+                <input type="hidden" name="currency_code" value="GBP">
+                <input type="submit" value="Pay with PayPal">
+            </form>
+        </div>
+    </section>
+
+
+    <!-- Full screen dropdown -->
+    <div id="dropdownMenu" class="dropdown-menu">
+        <a href="index.html" class="d-block py-3">Home</a>
+        <a href="aboutus.html" class="d-block py-3">About Us</a>
+        <a href="issues.html" class="d-block py-3">Issues</a>
+        <a href="contact.html" class="d-block py-3">Submissions</a>
+        <span class="close-button" onclick="toggleDropdown()">✖</span>
+    </div>
+
+    <script src="js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const quantityInput = document.getElementById('quantity');
+        const totalCostDisplay = document.getElementById('totalCost');
+
+        quantityInput.addEventListener('input', () => {
+            const quantity = parseInt(quantityInput.value) || 1;
+            const total = quantity * 5;
+            totalCostDisplay.textContent = `Total: £${total}`;
+        });
+    </script>
+
+</body>
+</html>

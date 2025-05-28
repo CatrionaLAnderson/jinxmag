@@ -33,42 +33,53 @@
                 </ul>
             </div>
         </nav>
-    </header>
 
     <h1>Magazine Issues</h1>
 
-    <div class="content1">
-        <div class="issues-container">
-            <img src="img/ComingSoon.jpg" class="issueimg" alt="Issue 1 Cover">
-            <div class="issuecontent">
-                <h2>Issue 1</h2>
-                <p>COMING SOON</p>
-                <a href="pdf/OnlyAv.pdf" class="pdf-link" target="_blank">Read Issue 1</a>
-            </div>
-        </div>
-
-        <div class="issues-container">
-            <img src="img/ComingSoon.jpg" class="issueimg" alt="Issue 2 Cover">
-            <div class="issuecontent">
-                <h2>Upcoming</h2>
-                <p>Write another short description of this issue.</p>
-                <!-- <a href="path/to/issue2.pdf" class="pdf-link" target="_blank">Read Issue 1 (PDF)</a> -->
-            </div>
-        </div>
-
-        <div class="issues-container">
-            <img src="img/ComingSoon.jpg" class="issueimg" alt="Issue 3 Cover">
-            <div class="issuecontent">
-                <h2>Upcoming</h2>
-                <p>Write another short description of this issue.</p>
-                <!-- <a href="path/to/issue3.pdf" class="pdf-link" target="_blank">Read Issue 3 (PDF)</a> -->
-            </div>
-        </div>
+    <div class="search-bar-container my-3 text-left" style="width: 50%;padding-left: 3%;">
+        <input type="text" id="issueSearchInput" class="form-control" placeholder="Search issues..." onkeyup="filterIssues()">
     </div>
 
-    <div class="side-images">
-        <img src="img/Tester.jpeg" class="sideimg" alt="Issue 2 Cover">
-        <img src="img/background2.heic" class="sideimg" alt="Issue 3 Cover">
+    <div id="noResultsMessage" class="text-center my-4" style="display: none;">
+        <p>No issues found. Try a different search term.</p>
+    </div>
+
+    <div class="issues-layout">
+        <div class="content1">
+            <div class="issues-container">
+                <img src="img/ComingSoon.jpg" class="issueimg" alt="Issue 1 Cover">
+                <div class="issuecontent">
+                    <h2>Issue 1</h2>
+                    <p>COMING SOON</p>
+                    <a href="pdf/OnlyAv.pdf" class="pdf-link" target="_blank">Read Issue 1</a>
+                </div>
+            </div>
+
+            <div class="issues-container">
+                <img src="img/ComingSoon.jpg" class="issueimg" alt="Issue 2 Cover">
+                <div class="issuecontent">
+                    <h2>Upcoming</h2>
+                    <p>Write another short description of this issue.</p>
+                    <!-- <a href="path/to/issue2.pdf" class="pdf-link" target="_blank">Read Issue 1 (PDF)</a> -->
+                </div>
+            </div>
+
+            <div class="issues-container">
+                <img src="img/ComingSoon.jpg" class="issueimg" alt="Issue 3 Cover">
+                <div class="issuecontent">
+                    <h2>Upcoming</h2>
+                    <p>Write another short description of this issue.</p>
+                    <!-- <a href="path/to/issue3.pdf" class="pdf-link" target="_blank">Read Issue 3 (PDF)</a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="side-images-wrapper">
+            <div class="side-images">
+                <img src="img/Tester.jpeg" class="sideimg" alt="Issue 2 Cover">
+                <img src="img/background2.heic" class="sideimg" alt="Issue 3 Cover">
+            </div>
+        </div>
     </div>
 
     <!-- Full screen dropdown -->
@@ -84,6 +95,28 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function filterIssues() {
+            const input = document.getElementById('issueSearchInput');
+            const filter = input.value.toLowerCase();
+            const containers = document.querySelectorAll('.issues-container');
+            const noResults = document.getElementById('noResultsMessage');
+            let found = false;
+
+            containers.forEach(container => {
+                const title = container.querySelector('h2').textContent.toLowerCase();
+                const description = container.querySelector('p').textContent.toLowerCase();
+                if (title.includes(filter) || description.includes(filter)) {
+                    container.style.display = "";
+                    found = true;
+                } else {
+                    container.style.display = "none";
+                }
+            });
+
+            noResults.style.display = found ? "none" : "block";
+        }
+    </script>
 </body>
 
 </html>
