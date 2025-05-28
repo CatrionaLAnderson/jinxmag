@@ -8,7 +8,7 @@ serve(async (req) => {
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer re_av7Z8hah_FeEzhpYPBEnkfyLjvatrozxZ",
+        "Authorization": "Bearer YOUR_RESEND_API_KEY",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
