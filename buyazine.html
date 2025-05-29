@@ -120,44 +120,52 @@
         });
     </script>
 
-    <!-- Supabase order submission script -->
+    <script type="module" src="js/supabase.js"></script>
     <script type="module">
-        import { createClient } from 'https://cdn.skypack.dev/@supabase/supabase-js';
+      import supabase from './js/supabase.js';
 
-      const supabaseUrl = 'https://autunitllvjblvjsionn.supabase.co';
-      const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1dHVuaXRsbHZqYmx2anNpb25uIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0MzM4ODcsImV4cCI6MjA2NDAwOTg4N30.ToOyrlhFctE2QxIwpj79gQz7-GBaVXmIBl2jsU6d6JA';
-      const supabase = createClient(supabaseUrl, supabaseKey);
-
-      const form = document.querySelector('.zine-order-form');
-
-      form.addEventListener('submit', async (e) => {
+      document.querySelector('.zine-order-form').addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const street = document.getElementById('street').value;
-        const city = document.getElementById('city').value;
-        const postcode = document.getElementById('postcode').value;
-        const country = document.getElementById('country').value;
-        const quantity = parseInt(document.getElementById('quantity').value);
-        const notes = document.getElementById('notes').value;
-        const total_cost = quantity * 5;
+        try {
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const street = document.getElementById('street').value;
+          const city = document.getElementById('city').value;
+          const postcode = document.getElementById('postcode').value;
+          const country = document.getElementById('country').value;
+          const quantity = parseInt(document.getElementById('quantity').value);
+          const notes = document.getElementById('notes').value;
+          const total_cost = quantity * 5;
 
-        console.log({
-          name, email, street, city, postcode, country, quantity, total_cost, notes
-        });
+          const { data, error } = await supabase
+            .from('zine_orders')
+            .insert([
+              {
+                name,
+                email,
+                street,
+                city,
+                postcode,
+                country,
+                quantity,
+                total_cost,
+                notes,
+              },
+            ]);
 
-        const { error } = await supabase.from('zine_orders').insert([{
-          name, email, street, city, postcode, country, quantity, total_cost, notes
-        }]);
-
-        if (error) {
-          alert('Something went wrong. Check the console for details.');
-          console.error('Supabase error:', error);
-        } else {
-          alert('Order submitted! Don’t forget to pay with PayPal below.');
-          form.reset();
-          document.getElementById('totalCost').textContent = 'Total: £5';
+          if (error) {
+            console.error('Error inserting order:', error);
+            alert('Order submission failed. Please try again.');
+          } else {
+            console.log('Order submitted:', data);
+            alert('Thank you! Your order has been submitted.');
+            document.querySelector('.zine-order-form').reset();
+            document.getElementById('totalCost').textContent = 'Total: £5';
+          }
+        } catch (err) {
+          console.error('Unexpected error:', err);
+          alert('An unexpected error occurred. Please try again.');
         }
       });
     </script>
